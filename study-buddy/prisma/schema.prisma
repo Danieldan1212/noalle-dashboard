@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Course {
+  id        String         @id @default(cuid())
+  name      String
+  nameHe    String
+  semester  String?
+  examDate  DateTime?
+  materials Material[]
+  quizzes   QuizSession[]
+  topics    Topic[]
+  createdAt DateTime       @default(now())
+}
+
+model Topic {
+  id        String     @id @default(cuid())
+  courseId   String
+  course    Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name      String
+  nameHe    String
+  mastery   Float      @default(0)
+  questions Question[]
+}
+
+model Material {
+  id        String   @id @default(cuid())
+  courseId   String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  type      String
+  title     String
+  filePath  String
+  year      Int?
+  processed Boolean  @default(false)
+  summary   String?
+  createdAt DateTime @default(now())
+}
+
+model Question {
+  id            String @id @default(cuid())
+  topicId       String
+  topic         Topic  @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  source        String
+  questionHe    String
+  optionsHe     String?
+  answerHe      String
+  explanationHe String
+  difficulty    Int    @default(2)
+  timesAsked    Int    @default(0)
+  timesCorrect  Int    @default(0)
+}
+
+model QuizSession {
+  id          String   @id @default(cuid())
+  courseId     String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  topicFilter String?
+  score       Float
+  totalQs     Int
+  correctQs   Int
+  duration    Int
+  answers     String
+  createdAt   DateTime @default(now())
+}

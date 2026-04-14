@@ -1,0 +1,8 @@
+language_backend: LSP
+line_ending: native
+gui_log_window: false
+web_dashboard: false
+log_level: 20
+tool_timeout: 240
+excluded_tools:
+  - execute_shell_command

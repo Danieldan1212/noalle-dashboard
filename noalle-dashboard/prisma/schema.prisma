@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Customer {
+  id           String        @id @default(cuid())
+  name         String
+  email        String?
+  phone        String?
+  instagram    String?
+  source       String
+  stage        String
+  isVip        Boolean       @default(false)
+  notes        String?
+  shopifyId    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  orders       Order[]
+  interactions Interaction[]
+}
+
+model Order {
+  id             String   @id @default(cuid())
+  customerId     String
+  customer       Customer @relation(fields: [customerId], references: [id])
+  type           String
+  description    String
+  amount         Float
+  currency       String   @default("ILS")
+  status         String
+  shopifyOrderId String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Interaction {
+  id           String    @id @default(cuid())
+  customerId   String
+  customer     Customer  @relation(fields: [customerId], references: [id])
+  type         String
+  notes        String
+  followUpDate DateTime?
+  createdAt    DateTime  @default(now())
+}
+
+model SocialPost {
+  id           String    @id @default(cuid())
+  imageUrl     String
+  enhancedUrl  String?
+  captionHe    String
+  captionEn    String?
+  hashtags     String
+  platforms    String
+  status       String
+  scheduledFor DateTime?
+  postedAt     DateTime?
+  engagement   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model AnalyticsSnapshot {
+  id        String   @id @default(cuid())
+  date      DateTime
+  source    String
+  metrics   String
+  createdAt DateTime @default(now())
+}

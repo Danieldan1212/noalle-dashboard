@@ -40,6 +40,7 @@ const PLATFORMS = [
 export function PostCreator({ onPublish, onSchedule }: PostCreatorProps) {
   const [step, setStep] = useState<"upload" | "enhance" | "caption" | "preview">("upload");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const [enhancedUrl, setEnhancedUrl] = useState<string | null>(null);
   const [isEnhancing, setIsEnhancing] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -58,6 +59,7 @@ export function PostCreator({ onPublish, onSchedule }: PostCreatorProps) {
     if (!file.type.startsWith("image/")) return;
     const url = URL.createObjectURL(file);
     setImageUrl(url);
+    setImageFile(file);
     setStep("enhance");
   }, []);
 
@@ -81,13 +83,15 @@ export function PostCreator({ onPublish, onSchedule }: PostCreatorProps) {
   };
 
   const handleEnhance = async (type: "enhance" | "removeBackground" | "lighting") => {
-    if (!imageUrl) return;
+    if (!imageFile) return;
     setIsEnhancing(true);
     try {
+      const formData = new FormData();
+      formData.append("file", imageFile);
+      formData.append("type", type);
       const response = await fetch("/api/enhance", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ imageUrl, type }),
+        body: formData,
       });
       const data = await response.json();
       if (data.enhancedUrl) {

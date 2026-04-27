@@ -33,10 +33,10 @@ export function Sidebar() {
           </div>
           <div>
             <h1 className="text-lg font-bold tracking-wide text-gold-gradient">
-              Noalle
+              נועל&apos;ה תכשיטים
             </h1>
             <p className="text-[11px] text-white/50 -mt-0.5">
-              נואל תכשיטים
+              Noalle Jewelry
             </p>
           </div>
         </Link>
@@ -81,7 +81,7 @@ export function Sidebar() {
         <div className="px-4 py-3 rounded-xl bg-white/5">
           <p className="text-xs text-white/40">גרסה 1.0.0</p>
           <p className="text-xs text-brand-gold-light/60 mt-0.5">
-            Noalle Dashboard
+            נועל&apos;ה תכשיטים
           </p>
         </div>
       </div>

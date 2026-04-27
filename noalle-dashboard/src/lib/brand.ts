@@ -1,6 +1,6 @@
 export const BRAND = {
   name: "Noalle Jewelry",
-  nameHe: "נואל תכשיטים",
+  nameHe: "נועל'ה תכשיטים",
   tagline: "תכשיטים שמספרים סיפור",
   taglineEn: "Jewelry that tells a story",
 
@@ -56,7 +56,7 @@ export const BRAND = {
 
   hashtags: {
     hebrew: [
-      "#נואל_תכשיטים",
+      "#נועלה_תכשיטים",
       "#תכשיטים",
       "#תכשיטי_זהב",
       "#עיצוב_ישראלי",

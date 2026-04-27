@@ -3,8 +3,8 @@ import { Sidebar } from "@/components/ui/sidebar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Noalle Dashboard | נואל תכשיטים",
-  description: "לוח בקרה עסקי לנואל תכשיטים - ניהול לקוחות, רשתות חברתיות ואנליטיקס",
+  title: "נועל'ה תכשיטים | Noalle Jewelry",
+  description: "לוח בקרה עסקי לנועל'ה תכשיטים - ניהול לקוחות, רשתות חברתיות ואנליטיקס",
 };
 
 export default function RootLayout({

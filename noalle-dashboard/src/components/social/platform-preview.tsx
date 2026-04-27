@@ -83,7 +83,7 @@ function FacebookPreview({
           N
         </div>
         <div className="flex-1">
-          <p className="text-sm font-semibold">Noalle Jewelry</p>
+          <p className="text-sm font-semibold">נועל'ה תכשיטים</p>
           <p className="text-xs text-gray-400">Just now</p>
         </div>
         <MoreHorizontal className="w-5 h-5 text-gray-400" />
@@ -163,7 +163,7 @@ function PinterestPreview({
           <div className="w-6 h-6 rounded-full gold-gradient flex items-center justify-center text-white text-[8px] font-bold">
             N
           </div>
-          <p className="text-xs text-gray-500">Noalle Jewelry</p>
+          <p className="text-xs text-gray-500">נועל'ה תכשיטים</p>
         </div>
       </div>
     </div>

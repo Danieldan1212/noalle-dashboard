@@ -133,7 +133,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-brand-charcoal">
-          {greeting} <span className="text-gold-gradient">נואל</span>
+          {greeting} <span className="text-gold-gradient">רועי</span>
         </h1>
         <p className="text-brand-charcoal-light/60 mt-1">
           הנה סיכום היום שלך

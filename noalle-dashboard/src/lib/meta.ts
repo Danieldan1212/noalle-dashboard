@@ -96,9 +96,29 @@ export async function getInstagramMediaInsights(mediaId: string) {
   });
 }
 
+// Publishing stubs — actual posting is done via Meta Business Suite.
+// These return a "not_implemented" status so the API route compiles correctly.
+export async function publishToInstagram(params: {
+  imageUrl: string;
+  caption: string;
+}) {
+  console.log("publishToInstagram stub called", params);
+  return { status: "not_implemented", message: "Use Meta Business Suite to post" };
+}
+
+export async function publishToFacebook(params: {
+  message: string;
+  imageUrl: string;
+}) {
+  console.log("publishToFacebook stub called", params);
+  return { status: "not_implemented", message: "Use Meta Business Suite to post" };
+}
+
 export const metaClient = {
   getInstagramInsights,
   getInstagramMedia,
   getFacebookPageInsights,
   getInstagramMediaInsights,
+  publishToInstagram,
+  publishToFacebook,
 };
